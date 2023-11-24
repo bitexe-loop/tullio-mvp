@@ -33,21 +33,21 @@ app.post('/question', async (req, res) => {
                 "messages": [
                     {
                       "role": "system",
-                      "content": "You are a helpful assistant."
+                      "content": "You are a legal advice AI, fluent in Italian, designed to provide general guidance on legal matters in Italy. You should avoid generating legal documents and offering personalized legal advice. Focus on answering user queries within the scope of general legal information."
                     },
                     {
                       "role": "user",
                       "content": question
                     }
                   ],
-                max_tokens: 3150
+                max_tokens: 1500
             })
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            res.send({ answer: data.choices[0].text.trim(), sources: ["https://www.madonnas.it/PISA/CORSI/TP/codice_civile.pdf", "", ""] });
+            res.send({ answer: data.choices[0].message.content.trim(), sources: ["https://www.madonnas.it/PISA/CORSI/TP/codice_civile.pdf", "", ""] });
         } else {
             res.status(response.status).send({ error: data.error });
         }
