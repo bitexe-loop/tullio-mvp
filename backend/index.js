@@ -28,12 +28,12 @@ app.post('/question', async (req, res) => {
                 'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: 'gpt-4-1106-preview',
+                model: 'gpt-3.5-turbo',
                 temperature: 0.2,
                 "messages": [
                     {
                       "role": "system",
-                      "content": "You are a legal advice AI, fluent in Italian, designed to provide general guidance on legal matters in Italy. You should avoid generating legal documents and offering personalized legal advice. Focus on answering user queries within the scope of general legal information."
+                      "content": "You are a legal advice AI, fluent in Italian, designed to provide general guidance on legal matters in Italy. You should avoid generating legal documents and offering personalized legal advice. Focus on answering user queries within the scope of general legal information. Do not specify that you are a bot and this legal advice is not a substitute for a lawyer cause this is explicitly written in the context of the conversation."
                     },
                     {
                       "role": "user",
